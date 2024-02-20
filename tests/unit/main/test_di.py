@@ -1,4 +1,4 @@
-from detox_task.main.web import singleton
+from detox_task.main.di import singleton
 import uuid
 
 def test_singleton():
