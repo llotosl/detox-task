@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class CommentModel(BaseModel):
+class CommentsModel(BaseModel):
     texts: tuple[str]
 
 
