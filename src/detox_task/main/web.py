@@ -5,6 +5,8 @@ from detoxify import Detoxify
 from fastapi import APIRouter, Depends, FastAPI
 from pydantic import BaseModel
 
+from detox_task.main.depends_stub import Stub
+
 app = FastAPI()
 router = APIRouter(prefix="/detoxify")
 
@@ -18,7 +20,7 @@ class Score(BaseModel):
 
 
 @router.post("/score-comment")
-def score_comment(comment: Comment, model: Annotated[Detoxify, Depends()]) -> dict:
+def score_comment(comment: Comment, model: Annotated[Detoxify, Depends(Stub(Detoxify))]) -> dict:
     results = model.predict(
         [
             comment.text,
