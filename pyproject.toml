@@ -20,6 +20,8 @@ pre-commit = "^3.6.2"
 
 [tool.poetry.group.testing.dependencies]
 pytest = "^8.0.1"
+httpx = "^0.26.0"
+anyio = "^4.3.0"
 
 [build-system]
 requires = ["poetry-core"]
