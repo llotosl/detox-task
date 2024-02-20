@@ -1,44 +1,19 @@
-import logging
-from typing import Annotated
+from fastapi import FastAPI
 
-from detoxify import Detoxify
-from fastapi import APIRouter, Depends, FastAPI
-from pydantic import BaseModel
-
-from detox_task.main.depends_stub import Stub
-
-app = FastAPI()
-router = APIRouter(prefix="/detoxify")
-
-
-class Comment(BaseModel):
-    text: str
-
-
-class Score(BaseModel):
-    score: int
-
-
-@router.post("/score-comment")
-def score_comment(comment: Comment, model: Annotated[Detoxify, Depends(Stub(Detoxify))]) -> dict:
-    results = model.predict(
-        [
-            comment.text,
-        ],
-    )
-    return results
-
-
-logger = logging.getLogger(__name__)
+from detox_task.main.di import init_dependencies
+from detox_task.presentation.fapi.detox.router import detox_router
+from detox_task.presentation.fapi.index import index_router
 
 
 def init_routers(app: FastAPI) -> None:
-    app.include_router(router)
+    app.include_router(index_router)
+    app.include_router(detox_router, prefix="/detox")
 
 
 def create_app() -> FastAPI:
     app = FastAPI()
     init_routers(app)
+    init_dependencies(app)
     return app
 
 

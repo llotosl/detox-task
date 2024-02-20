@@ -4,6 +4,8 @@ from collections.abc import Callable
 from detoxify import Detoxify
 from fastapi import FastAPI
 
+from detox_task.main.depends_stub import Stub
+
 
 def singleton(func: Callable) -> Callable:
     last_result = None
@@ -26,4 +28,4 @@ def new_detoxify_model() -> Detoxify:
 
 
 def init_dependencies(app: FastAPI) -> None:
-    app.dependency_overrides[Detoxify] = new_detoxify_model
+    app.dependency_overrides[Stub(Detoxify)] = new_detoxify_model
