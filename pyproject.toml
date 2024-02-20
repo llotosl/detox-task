@@ -15,6 +15,7 @@ uvicorn = "^0.27.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.2.0"
+pre-commit = "^3.6.2"
 
 
 [tool.poetry.group.testing.dependencies]
@@ -23,3 +24,97 @@ pytest = "^8.0.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+# Версии python 3.11 -> py311
+target-version = "py311"
+
+# Включение авто исправления по умолчанию
+fix = true
+
+# Ограничение длины строки
+line-length = 120
+
+# Включенные плагины
+select = [
+    "F",   # pyflakes
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "UP",  # pyupgrade
+    "C90", # mccabe
+    "N",   # pep8-naming
+    "DJ",  # flake8-django
+    "C4",  # flake8-comprehensions
+    "B",   # flake8-bugbear
+    "BLE", # flake8-blind-except
+    "T20", # flake8-print
+    "Q",   # flake8-quotes
+    "ANN", # flake8-annotations
+    "COM", # flake8-commas
+]
+
+# Исключения
+exclude = [
+    "eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".tox",
+    ".venv",
+    ".pyc",
+    ".pyi",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "migrations",
+    "app/bus/messages",
+    "app/manage.py",
+]
+
+ignore = [
+    "ANN101", # Missing type annotation for `self` in method
+    "ANN102", # Missing type annotation for `cls` in method
+]
+
+
+[tool.ruff.mccabe]
+# Настройка максимальной сложности
+max-complexity = 10
+
+
+[tool.coverage.run]
+omit = [
+    "manage.py",
+    "conf.py",
+    "__init__.py",
+    "*migrations*",
+    "*test*",
+]
+
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+
+[tool.isort]
+profile = "black"
+line_length = 120
+skip = "migrations, templates, .venv"

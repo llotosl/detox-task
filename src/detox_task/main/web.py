@@ -1,8 +1,9 @@
-from fastapi import FastAPI, APIRouter, Depends
-from pydantic import BaseModel
-from detoxify import Detoxify
 import logging
 from typing import Annotated
+
+from detoxify import Detoxify
+from fastapi import APIRouter, Depends, FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 router = APIRouter(prefix="/detoxify")
@@ -21,12 +22,13 @@ def score_comment(comment: Comment, model: Annotated[Detoxify, Depends()]) -> di
     results = model.predict(
         [
             comment.text,
-        ]
+        ],
     )
     return results
 
 
 logger = logging.getLogger(__name__)
+
 
 def init_routers(app: FastAPI) -> None:
     app.include_router(router)

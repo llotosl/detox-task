@@ -1,5 +1,8 @@
 import functools
-from typing import Callable
+from collections.abc import Callable
+
+from detoxify import Detoxify
+from fastapi import FastAPI
 
 
 def singleton(func: Callable) -> Callable:
