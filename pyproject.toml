@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "detox-task"
+version = "0.1.0"
+description = ""
+authors = ["lLotosl <lotosyt1@gmail.com>"]
+readme = "README.md"
+packages = [{include = "detox_task", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+detoxify = "^0.5.2"
+fastapi = "^0.109.2"
+uvicorn = "^0.27.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+
+
+[tool.poetry.group.testing.dependencies]
+pytest = "^8.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
