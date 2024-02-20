@@ -1,3 +1,4 @@
+from functools import lru_cache
 from typing import Annotated
 
 from detoxify import Detoxify
@@ -9,6 +10,11 @@ from detox_task.presentation.fapi.detox.models import CommentModel, ScoreModel
 detox_router = APIRouter()
 
 
+@lru_cache  # TODO: redis cache and use cache on endpoint instead of
+def model_predict(model: Detoxify, text: str) -> dict:
+    return model.predict(text)
+
+
 @detox_router.post("/score-comment", response_model=ScoreModel)
 def score_comment(
     comment: CommentModel,
@@ -17,7 +23,4 @@ def score_comment(
         Depends(Stub(Detoxify)),
     ],
 ) -> dict:
-    results = model.predict(
-        comment.text,
-    )
-    return results
+    return model_predict(model, comment.text)

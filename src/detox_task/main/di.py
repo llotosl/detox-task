@@ -22,10 +22,11 @@ def singleton(func: Callable) -> Callable:
     return wrapper
 
 
-@singleton
-def new_detoxify_model() -> Detoxify:
-    return Detoxify("multilingual")
+def create_detoxify_model() -> Detoxify:
+    return Detoxify("multilingual")  # TODO .env variables
 
 
 def init_dependencies(app: FastAPI) -> None:
-    app.dependency_overrides[Stub(Detoxify)] = new_detoxify_model
+    detoxify_model = create_detoxify_model()
+
+    app.dependency_overrides[Stub(Detoxify)] = lambda: detoxify_model
