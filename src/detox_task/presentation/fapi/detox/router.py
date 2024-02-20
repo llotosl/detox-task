@@ -18,8 +18,8 @@ def model_predict(
     return model.predict(texts)
 
 
-@detox_router.post("/score-comment", response_model=ScoreModel)
-def score_comment(
+@detox_router.post("/score-comments", response_model=ScoreModel)
+def score_comments(
     comment: CommentModel,
     model: Annotated[
         Detoxify,
