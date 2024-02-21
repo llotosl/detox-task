@@ -8,9 +8,9 @@ from detox_task.adapters.broker.in_memory.broker import InMemoryBroker
 from detox_task.adapters.db.in_memory.message_score_repository import InMemoryMessageScoreRepository
 from detox_task.application.get_message_scores.service import GetMessageScoresService
 from detox_task.application.score_message_consumer.consumer import ScoreMessageConsumer
+from detox_task.domain.models import Message
 from detox_task.main.message_consumer import run_consumer
 from detox_task.main.web import create_app, run_api
-from detox_task.models.message import Message
 
 logger = logging.getLogger(__name__)
 

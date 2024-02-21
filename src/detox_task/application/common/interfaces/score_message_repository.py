@@ -1,7 +1,7 @@
 import abc
 from collections.abc import Sequence
 
-from detox_task.models.message_score import MessageScore
+from detox_task.domain.models.message_score import MessageScore
 
 
 class MessageScoreRepository(abc.ABC):

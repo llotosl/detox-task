@@ -1,8 +1,8 @@
 import uuid
 from dataclasses import dataclass
 
-from detox_task.models.message import Message
-from detox_task.models.score import Score
+from detox_task.domain.models.message import Message
+from detox_task.domain.models.score import Score
 
 
 @dataclass
