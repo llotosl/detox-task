@@ -6,8 +6,8 @@ from detoxify import Detoxify
 
 from detox_task.application.common.interfaces.broker import Broker
 from detox_task.application.common.interfaces.score_message_repository import MessageScoreRepository
-from detox_task.domain.models import Score
 from detox_task.domain.models.message_score import MessageScore
+from detox_task.domain.models.score import Score
 
 logger = logging.getLogger(__name__)
 
