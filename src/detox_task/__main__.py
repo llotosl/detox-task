@@ -16,8 +16,8 @@ logger = logging.getLogger(__name__)
 
 
 async def main() -> None:
-    model = Detoxify("multilingual")  # TODO: use di-framework for dependency injection
     messages_topic = "messages"
+    model = Detoxify("multilingual")  # TODO: use di-framework for dependency injection
     message_score_repository = InMemoryMessageScoreRepository()
     broker = build_brocker(messages_topic)
     get_message_scores_service = GetMessageScoresService(
