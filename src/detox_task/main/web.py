@@ -30,7 +30,7 @@ def init_dependencies(app: FastAPI, get_message_scores_service: GetMessageScores
 async def run_api(app: FastAPI) -> None:
     config = uvicorn.Config(
         app,
-        host="127.0.0.1",  # TODO: .env variables
+        host="0.0.0.0",  # TODO: .env variables
         port=8000,
         log_level=logging.INFO,
     )
