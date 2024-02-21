@@ -9,7 +9,7 @@ from detox_task.main.depends_stub import Stub
 scores_router = APIRouter(prefix="/scores")
 
 
-@scores_router.get("", response_model=list[MessageScoreModel])
+@scores_router.get("", response_model=list[MessageScoreModel])  # TODO: sorting by score values
 def get_scores(
     get_message_scores_service: Annotated[
         GetMessageScoresService,
