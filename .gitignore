@@ -50,3 +50,5 @@ tmp/
 
 CONSUMER._heartbeat
 EXECUTOR._heartbeat
+
+dist
