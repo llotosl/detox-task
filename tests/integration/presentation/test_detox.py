@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from detox_task.presentation.fapi.detox.models import ScoreModel
+from detox_task.adapters.fapi.scores.models import ScoresModel
 
 
 def test_detox_ws(fastapi_test_client: TestClient) -> None:
@@ -8,4 +8,4 @@ def test_detox_ws(fastapi_test_client: TestClient) -> None:
         ws.send_json(["test"])
         data = ws.receive_json()
 
-    ScoreModel(**data)
+    ScoresModel(**data)
