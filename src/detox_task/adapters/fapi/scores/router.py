@@ -3,7 +3,7 @@ from typing import Annotated
 from fastapi import APIRouter, Depends
 
 from detox_task.adapters.fapi.scores.models import MessageScoreModel
-from detox_task.application.get_scores.service import GetMessageScoresService
+from detox_task.application.get_message_scores.service import GetMessageScoresService
 from detox_task.main.depends_stub import Stub
 
 scores_router = APIRouter(prefix="/scores")

@@ -5,9 +5,10 @@ from fastapi import FastAPI
 
 from detox_task.adapters.fapi.index import index_router
 from detox_task.adapters.fapi.scores.router import scores_router
-from detox_task.application.get_scores.service import GetMessageScoresService
-from detox_task.main.__main__ import logger
+from detox_task.application.get_message_scores.service import GetMessageScoresService
 from detox_task.main.depends_stub import Stub
+
+logger = logging.getLogger(__name__)
 
 
 def create_app(get_message_scores_service: GetMessageScoresService) -> FastAPI:
